@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(180deg, #84a9ff, #f5f8ff);
+    /*phan body cao het man hinh*/
+    height:100vh;
+    
+}
+h1.tieude{
+    text-align: left;
+    font-weight: bold;
+    font-style: italic;
+    color:#011f82;
+    font-family: "Georgia Pro", Georgia, serif;
+    font-size:30px;
+    text-shadow:1px 1px 2px;
+}
+
+
+
+div.container{
+    display:flex;
+    flex-direction: row;
+    /*Can noi dung ben trong ra giua*/
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Crimson Pro", serif;
+    color:#4864e3;
+    font-weight: bold;
+    
+}
+.noidung h1{
+    font-size: 68.8px;
+}
+
+input{
+    height: 30px;
+    border-radius: 20px;
+    background-color: #e4eaec;
+    border: 0px;
+    font-family: "Alata", sans-serif;
+    font-weight: 400;
+    
+    width:500px;
+    transition: transform 1s;
+    display: block;
+    margin-top:20px;
+}
+
+input.submit{
+    align-content: center;
+    width: 200px;
+}
+
+
+input:hover{
+    transform: scale(1.1,1.1);
+}
+
+
+
+
+img{
+    width: 400px;
+    margin-left:20px;
+    box-shadow: 0px 0px 20px blue;
+    border-radius:100px;
+    transition: transform 1s;
+}
+
+img:hover{
+    transform: scale(1.05,1.05);
+}
+

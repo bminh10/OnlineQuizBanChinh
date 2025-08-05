@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alata&family=Libertinus+Mono&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libertinus+Mono&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alata&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Libertinus+Mono&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style/chonsocau.css" >
+    <title>Chọn sô câu</title>
+</head>
+<body>
+    <h1 class="tieude">OnlineQuiz</h1>
+    <div class="container">
+        <div class="noidung">
+            <h1>Số câu bạn muốn làm</h1>
+            <label>
+      <input type="radio" name="chedo" value="gioihan" /> Chọn số câu cụ thể
+    </label>
+    <br/>
+    
+
+    <br /><br />
+
+    <input type="number" placeholder="Nhập số câu muốn làm" id="do" min="1" />
+    <input type="submit" value="Xác nhận" id="nop" />
+
+    <div id="warning"></div>
+
+        </div>
+        <img src="image/chonsocau.png"/>
+        
+    </div>
+    
+    <script>
+      
+
+      const q = document.getElementById("do");
+      const q1 = document.getElementById("nop");
+      const warning = document.getElementById("warning");
+
+      function chuyentrang(target) {
+        window.location.href = target;
+      }
+
+      q1.addEventListener("click", () => {
+        const mode = document.querySelector('input[name="chedo"]:checked').value;
+
+        if (mode === "luyentiep") {
+          localStorage.setItem("chedo", "luyentiep");
+          chuyentrang("test2.html");
+          return;
+        }
+        
+        let val = parseInt(q.value);
+        if (!val || val < 1) {
+          warning.textContent = "⚠️ Số câu phải là một số nguyên dương!";
+          return;
+        }
+
+        localStorage.setItem("chedo", "gioihan");
+        localStorage.setItem("gt", val);
+        chuyentrang("test2.html");
+
+      });
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+
+body{
+    background: radial-gradient(circle at 50% 50%, #84a9ff, #f5f8ff, #b8e1ff);
+    font-family: "Alata", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    min-height: 100vh /*them de khong bi trat mau*/
+}
+
+h1{
+    text-align: center;
+    margin-top:0px;
+    font-family: "Crimson Pro", serif;
+    color:#4864e3;
+    font-weight: bold;
+    font-size: 50px;
+    text-shadow: 1px 1px 3px;
+   
+}
+h1.tieude{
+    text-align: left;
+    font-weight: bold;
+    font-style: italic;
+    color:#011f82;
+    font-family: "Georgia Pro", Georgia, serif;
+    font-size:30px;
+    text-shadow:1px 1px 2px;
+}
+
+div.main{
+     background-color: #f7fdff ;
+     
+}
+
+.form{
+    width: 60vh;
+    height: 75vh;
+    background-color: #f7fdff;
+    border-radius: 30px;
+    
+    margin: 12vh auto;
+    
+    padding: 30px;
+    
+    box-shadow: 0px 0px 30px #6366f1;
+}
+
+div.nhap{
+    margin-bottom:22px;
+    margin-top:5px;
+    
+}
+label{
+    color:#4864e3;
+}
+
+input{
+     width: 100%;
+    border-bottom: 2px solid black;
+    
+    border-top:none;
+    border-right:none;
+    border-left:none;
+    background-color: #f7fdff;
+    border-radius: 4px;
+    padding: 4px;
+    
+    display:block
+}
+
+p{
+    display: inline;
+    font-family: "Alata", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+
+button{
+    display: block;
+    text-decoration: none;
+    margin: 0 auto;
+    margin-top: 40px;
+    font-family: "Alata", sans-serif;
+    font-weight: 400;
+    height: 40px;
+    
+    border: 2px solid #1f48ff;
+    width: 40%;
+    border-radius: 30px;
+}
+h1.hello{
+    text-align: left;
+    font-size: 25px;
+    font-weight: 300;
+}
+
+button:hover{
+    transition: background-color 0.5s, transform 0.5s;
+    transform: scale(1.1,1.1);
+    background-color: gray;
+}

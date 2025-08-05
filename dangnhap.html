@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alata&family=Libertinus+Mono&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libertinus+Mono&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alata&family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Libertinus+Mono&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style/dangnhap.css">
+    <script src="js/chuyendangnhap.js"></script>
+    <title>Đăng nhập</title>
+</head>
+<body>
+    <h1 class="tieude">OnlineQuiz</h1>
+    <form class="form">
+        <div class="main">
+        <h1>Đăng nhập</h1>
+        
+
+        <div class="nhap">
+            <label for="name">Tên đăng nhập</label>
+            <input type="text" id = "tendn"   required>
+        </div>
+        
+        
+       
+        
+        <div class="nhap">
+            <label for="password">Mật khẩu</label>
+            <input type="password" id ="mk"   required>
+            
+            <p id="kq"></p>
+        </div>
+            <!--Neu bo trong type cua button se mac dinh la submit va khong chuyen sang trang mới
+            nếu người dùngg khác bấm đăng ký-->
+            <button type="button" onclick="chuyen()">Đăng nhập</button>
+            <h1 class="hello">Xin chào!</h1>
+        </div>
+
+    </form>
+</body>
+</html>

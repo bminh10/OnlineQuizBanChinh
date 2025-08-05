@@ -1,0 +1,106 @@
+*{
+    /*Dễ kiểm soát layout về padding border margin*/
+    box-sizing: border-box;
+}
+
+
+
+body{
+    font-family: "Noto Serif Display";
+    font-style: italic;
+    font-weight: bold;
+    margin:0px;
+   
+    /*Cao 100% trinh duyet*/
+    height:100vh;
+    overflow:scroll;
+    /*Cho phep phần tử con absolute định vị dựa vào body*/
+    position: relative;
+    background-color: #ced1e6;
+    
+}
+
+
+div.background{
+    content: ""; /*Tao div noi dung rong chi de hien thi noi dung*/
+    /*Dinh vi dua tren body*/
+    position:absolute;
+    /*Rộng bằng body và cao bằng body*/
+    width: 100%;
+    height: 100%;
+    
+     /*bao phu man hinh*/
+   
+    background-image: url(../image/z6808230392973_f8a438b72eeecdb21979dd42402e172d.jpg);
+    background-size:cover;
+    background-attachment: fixed;
+    
+    
+    /*Căn giua hình*/
+    background-position: center center;
+    /*đưa ảnh ra sau chữ để không làm mờ luôn chữ. Nếu không dùng thì ảnh đè lên chữ*/
+    z-index: -1;
+    /*Làm mờ ảnh*/
+    opacity: 0.3;
+}
+
+div.TieuDe{
+    /*Hien thi dang cot cho muc dang nhap va dang ky*/
+    display:flex;
+    flex-direction: column;
+    /*Can giua theo chieu ngang va chieu doc*/
+    align-items: center;
+    justify-content: center;
+    
+    
+    color: #1f48ff;
+    /*Cho chu o giua khung*/
+    text-align: center;
+    
+    
+}
+
+.TieuDe h1{
+    font-size:150px;
+    font-weight: bold;
+    font-style: italic;
+    color:#011f82;
+    font-family: "Georgia Pro", Georgia, serif;
+    text-shadow:5px 5px 5px black;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    
+}
+
+
+.TieuDe a{
+    text-decoration: none;
+    
+    color: #1f48ff;
+    font-size: 40px;
+   
+    margin-bottom: 40px;
+    
+    border: 2px solid  black;
+    background-color: white;
+    border-radius: 50px;
+    width: 20%;
+    padding: 10px;  
+    transition: width 2s ease,color 2s,border-color 1s ease;
+    
+}
+
+
+.TieuDe a:hover{        
+    color: white;
+    border-color:white;
+    background-color:#758ae9;
+    width: 30%;
+    
+}
+
+
+
+
+
+

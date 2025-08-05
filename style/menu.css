@@ -1,0 +1,152 @@
+* {
+  font-family: "Crimson Text", serif;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  background: radial-gradient(circle at 50% 50%, #84a9ff, #f5f8ff);
+  margin: 0px; /*Xoa khoang trang toan trang*/
+  padding: 0px;
+}
+
+div.Menu {
+  display: flex;
+  flex-direction: column;
+  background-color: #758ae9;
+  width: 30vw;
+  height: 100vh;
+  transition: width 0.5s ease;
+}
+
+.tag:hover {
+  background-color: #f5f8ff;
+}
+
+.Menu:hover {
+  width: 35vw;
+  transition: all 0.5s;
+}
+
+.slot1 {
+  height: 25vh;
+  background: radial-gradient(circle at 50% 50%, #84a9ff, #f5f8ff);
+}
+
+h1 {
+  
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  
+  padding: 40px;
+  text-shadow: 0px 0px 20px black;
+  font-size: 40px;
+}
+
+.active {
+  display: flex;
+  align-items: center; /*giup can giua theo chieu ngang*/
+  justify-content: center; /*giup can giua theo chieu doc*/
+  font-size: 40px;
+  padding: 40px;
+  height: 30vh;
+  text-decoration: none;
+  color: #4864e3;
+  text-align: center;
+  background-color: #f7fdff;
+  font-weight: bold;
+  font-style: italic;
+  
+}
+
+#trangchu:hover{
+    opacity: 0.5;
+}
+#themcauhoi:hover{
+    opacity: 0.5;
+}
+
+
+a.tag {
+  display: flex;
+  align-items: center; /*giup can giua theo chieu ngang*/
+  justify-content: center; /*giup can giua theo chieu doc*/
+  font-size: 40px;
+  padding: 40px;
+  height: 25vh;
+  text-decoration: none;
+  color: gray;
+  background-color: #e4eaec;
+  text-align: center;
+}
+
+div.bangmon {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+}
+
+div.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 90px;
+  height: 40vh;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+div.number {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 10px;
+  border: solid;
+  background-color: white;
+  color: #4864e3;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  line-height: 65px; /*căn giữa theo chiều dọc*/
+  font-size: 45px;
+  font-weight: bold;
+}
+
+div.card {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 200px;
+  width: 100%;
+  background-color: #6366f1;
+  border-radius: 30px;
+  text-align: center;
+  padding: 30px;
+  font-style: italic;
+  font-size: 42px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.number {
+  width: 10px;
+  height: 10px;
+}
+p {
+  text-align: center;
+  margin-top: 60px;
+  color: white;
+}
+.card:hover {
+  transform: scale(1.07);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.3);
+}
+a {
+  text-decoration: none;
+}
+#duo {
+  color: black;
+  font-family: "Crimson Pro", serif;
+  font-size: x-large;
+  text-align: center;
+  margin-top: 200px;
+  width: 100%;
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kiểm Tra Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/giaodienlambai.css">
+  
+</head>
+<body>
+  <div class="container">
+    <div id="Traloi"></div>
+
+  <div id="controlBtns">
+    <button id="nopbai">Nộp bài</button>
+   
+  </div>
+
+  <div id="ketqua" style="margin-top:20px; padding:10px; background:#fff3cd; border:1px solid #ffeeba; border-radius:8px; display:none;">
+  <h3>📋 Kết quả kiểm tra:</h3>
+  <div id="noidungketqua"></div>
+  </div>
+
+  <script>
+// 📦 Lấy dữ liệu từ ngân hàng đề thi
+const allQuestions = JSON.parse(localStorage.getItem("cauhoi")) || [];
+
+// 🧮 Xác định số câu
+if (allQuestions.length === 0) {
+  alert("❌ Hiện chưa có câu hỏi trong ngân hàng đề!");
+  window.location.href = "them.html";
+}
+
+let numQuestions = 8;
+const mode = localStorage.getItem("chedo");
+
+if (mode === "gioihan") {
+  numQuestions = parseInt(localStorage.getItem("gt") || "8");
+  if (numQuestions > allQuestions.length) {
+    alert("⚠️ Ngân hàng đề không đủ số câu. Vui lòng thêm thêm câu hỏi.");
+    window.location.href = "option.html";
+  }
+}
+
+
+
+// 🎯 Random số lượng câu hỏi theo yêu cầu
+const selectedQuestions = allQuestions
+  .sort(() => Math.random() - 0.5)
+  .slice(0, numQuestions);
+
+const userAnswers = new Array(numQuestions).fill(null);
+const markFlags = new Array(numQuestions).fill(false);
+
+
+  const Traloi = document.getElementById("Traloi");
+
+for (let i = 0; i < numQuestions; i++) {
+  const q = selectedQuestions[i];
+  const div = document.createElement("div");
+  div.className = "ChonAns";
+  div.innerHTML = `<p><strong>Câu ${i + 1}:</strong> ${q.question}</p>`;
+
+  // 🔖 Nút đánh dấu
+  const markBtn = document.createElement("button");
+  markBtn.textContent = "🔖 Đánh dấu";
+  markBtn.onclick = () => {
+    markFlags[i] = !markFlags[i];
+    markBtn.style.backgroundColor = markFlags[i] ? "#ffe599" : "";
+    markBtn.style.fontWeight = markFlags[i] ? "bold" : "normal";
+  };
+  div.appendChild(markBtn);
+
+  // 🎯 Nút chọn đáp án A-D
+  ["A", "B", "C", "D"].forEach(label => {
+    const btn = document.createElement("button");
+    btn.textContent = `${label}: ${q.answers[label]}`;
+    btn.onclick = () => {
+      userAnswers[i] = label;
+      const siblings = div.querySelectorAll("button:not(:first-child)");
+      siblings.forEach(b => {
+        b.style.backgroundColor = "";
+        b.style.fontWeight = "normal";
+      });
+      btn.style.backgroundColor = "#d0f0c0";
+      btn.style.fontWeight = "bold";
+    };
+    div.appendChild(btn);
+  });
+
+  Traloi.appendChild(div);
+}
+
+
+
+  // ⏳ Đếm ngược thời gian (5 phút)
+  if (mode === "gioihan") {
+    const timerDiv = document.createElement("div");
+timerDiv.id = "timer"; // đặt ID để có thể ẩn sau
+timerDiv.style = "font-weight:bold; color:red; margin-bottom:10px";
+document.body.insertBefore(timerDiv, document.body.firstChild);
+
+let timeLeft = selectedQuestions.reduce((sum, q) => sum + q.time, 0);
+
+
+const timer = setInterval(() => {
+  const min = Math.floor(timeLeft / 60);
+  const sec = timeLeft % 60;
+  timerDiv.textContent = `🕒 Thời gian còn lại: ${min}:${sec < 10 ? "0" : ""}${sec}`;
+  
+  if (--timeLeft < 0) {
+    clearInterval(timer);
+    document.getElementById("timer").remove();
+    nopBai(true); // gọi nộp bài, không cảnh báo
+  }
+}, 1000);
+
+  }
+
+  // 📋 Nút Nộp bài
+  document.getElementById("nopbai").onclick = () => nopBai(false);
+
+  function nopBai(isAuto = false) {
+  if (!isAuto) {
+    const unanswered = userAnswers
+      .map((ans, i) => ans === null ? `Câu ${i + 1}` : null)
+      .filter(x => x !== null);
+
+    if (unanswered.length) {
+      const confirmSubmit = confirm(`⚠️ Bạn chưa trả lời các câu: ${unanswered.join(", ")}.\nVẫn muốn nộp bài?`);
+      if (!confirmSubmit) return;
+    }
+  }
+
+  document.getElementById("timer")?.remove();
+
+  let score = 0;
+  let wrongList = [];
+
+  for (let i = 0; i < numQuestions; i++) {
+    const q = selectedQuestions[i];
+    const correct = q.correct; // "A" / "B" / "C" / "D"
+    const user = userAnswers[i];
+
+    if (user === correct) {
+      score++;
+    } else {
+      wrongList.push(
+        `<li>Câu ${i + 1}: Bạn chọn <strong>${user ?? "-"}</strong>, đúng là <strong>${correct}</strong></li>`
+      );
+    }
+  }
+
+  const numMarked = markFlags.filter(x => x).length;
+  const ketquaDiv = document.getElementById("ketqua");
+  const ndkq = document.getElementById("noidungketqua");
+
+  ndkq.innerHTML = `
+    <p>🎉 Bạn đúng <strong>${score}/${numQuestions}</strong> câu!</p>
+    <p>🔖 Đã đánh dấu <strong>${numMarked}</strong> câu</p>
+    ${wrongList.length ? `<p>❌ Các câu sai:</p><ul>${wrongList.join("")}</ul>` : `<p>✅ Bạn đã làm đúng tất cả các câu!</p>`}
+    <br>
+    <button onclick="window.location.href='menu.html'" style="padding: 8px 14px; margin-top: 10px;">🏠 Quay về trang chủ</button>
+  `;
+
+  ketquaDiv.style.display = "block";
+  ketquaDiv.scrollIntoView({ behavior: "smooth" });
+}
+
+
+
+</script>
+
+
+
+</body>
+</html>
